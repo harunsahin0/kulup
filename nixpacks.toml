@@ -5,4 +5,6 @@ nixPkgs = ["python312", "postgresql", "gcc"]
 cmds = ["python manage.py collectstatic --noinput"]
 
 [start]
-cmd = "gunicorn okul_kulupleri.wsgi"
+# ÖNEMLİ: Tablo yoksa, önce migrate et, sonra gunicorn ile sunucuyu başlat.
+# Bu komutun başarısız olma ihtimali çok düşüktür.
+cmd = "python manage.py migrate --noinput && gunicorn okul_kulupleri.wsgi"
