@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python312", "postgresql", "gcc"]
+
+[phases.build]
+cmds = ["python manage.py collectstatic --noinput"]
+
+[start]
+cmd = "python manage.py migrate && gunicorn okul_kulupleri.wsgi"
