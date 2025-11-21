@@ -5,4 +5,4 @@ nixPkgs = ["python312", "postgresql", "gcc"]
 cmds = ["python manage.py collectstatic --noinput"]
 
 [start]
-cmd = "python manage.py migrate && gunicorn okul_kulupleri.wsgi"
+cmd = "gunicorn okul_kulupleri.wsgi"

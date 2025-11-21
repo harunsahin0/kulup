@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn okul_kulupleri.wsgi
+web: gunicorn okul_kulupleri.wsgi
