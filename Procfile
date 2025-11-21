@@ -1,0 +1,1 @@
+web: gunicorn okul_kulupleri.wsgi

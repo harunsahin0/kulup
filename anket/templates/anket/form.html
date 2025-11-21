@@ -1,0 +1,85 @@
+{% extends 'anket/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card p-4">
+            <h3 class="mb-2 text-center">Hazırbulunuşluk ve İlgi Anketi</h3>
+            <p class="text-muted text-center mb-4">Lütfen 1 (En Az) - 5 (En Çok) arası puanlayın.</p>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="row mb-4 p-3 bg-light rounded">
+                    <h5 class="section-title">Öğrenci Bilgileri</h5>
+                    <div class="col-md-4">{{ form.ogrenci_no.label_tag }} {{ form.ogrenci_no }}</div>
+                    <div class="col-md-4">{{ form.isim.label_tag }} {{ form.isim }}</div>
+                    <div class="col-md-4">{{ form.soyisim.label_tag }} {{ form.soyisim }}</div>
+                </div>
+
+                <h5 class="section-title">🤖 Teknoloji ve Bilim</h5>
+                <div class="mb-3">
+                    <label class="form-label">1. Bilgisayar programları, kodlama ve algoritmalar ne kadar ilgini çekiyor?</label>
+                    {{ form.tekno_s1 }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">2. Robotların nasıl hareket ettiğini veya elektronik devreleri merak ediyor musun?</label>
+                    {{ form.tekno_s2 }}
+                </div>
+
+                <h5 class="section-title mt-4">🎨 El Becerisi ve Tasarım</h5>
+                <div class="mb-3">
+                    <label class="form-label">3. Gemi maketleri, ahşap boyama veya detaylı el işçiliği yapmak ister misin?</label>
+                    {{ form.el_s1 }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">4. Denizcilik düğümleri atmak veya üç boyutlu nesneler tasarlamak ilgini çeker mi?</label>
+                    {{ form.el_s2 }}
+                </div>
+
+                <h5 class="section-title mt-4">🌍 Dil ve Kültür</h5>
+                <div class="mb-3">
+                    <label class="form-label">5. Yeni bir yabancı dil (İngilizce, İspanyolca vb.) öğrenme isteğin nedir?</label>
+                    {{ form.dil_s1 }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">6. Yabancı kültürleri tanımak, farklı dillerde dizi/film izlemek hoşuna gider mi?</label>
+                    {{ form.dil_s2 }}
+                </div>
+
+                <h5 class="section-title mt-4">♟️ Strateji ve Zeka</h5>
+                <div class="mb-3">
+                    <label class="form-label">7. Satranç gibi hamle hesabı gerektiren oyunları sever misin?</label>
+                    {{ form.strat_s1 }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">8. Karmaşık problemleri çözmek ve analitik düşünmek seni heyecanlandırır mı?</label>
+                    {{ form.strat_s2 }}
+                </div>
+
+                <h5 class="section-title mt-4">🎵 Sanat ve İfade</h5>
+                <div class="mb-3">
+                    <label class="form-label">9. Bir enstrüman çalmak veya koroda şarkı söylemek ister misin?</label>
+                    {{ form.sanat_s1 }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">10. Fotoğraf çekmek, kadraj ayarlamak veya görsel sanatlarla uğraşmak?</label>
+                    {{ form.sanat_s2 }}
+                </div>
+
+                <h5 class="section-title mt-4">🏆 Başarı Belgesi (Opsiyonel)</h5>
+                <div class="mb-3">
+                    <label class="form-label">Varsa ilgili olduğun alanla ilgili sertifika veya madalya fotoğrafı yükle:</label>
+                    {{ form.sertifika }}
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 btn-lg mt-3">Sonucumu Göster</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="{% url 'liste' %}">Tüm Listeyi Gör</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

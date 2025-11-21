@@ -1,0 +1,25 @@
+{% extends 'anket/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+        <div class="card p-5 border-success">
+            <h2 class="display-5 text-success">Harika! {{ ogrenci.isim }}</h2>
+            <p class="lead">Verdiğin cevaplar ve yeteneklerine göre seni şu kulübe öneriyoruz:</p>
+            <hr>
+            <h1 class="fw-bold text-primary display-3">{{ kulup }}</h1>
+
+            {% if ogrenci.sertifika %}
+            <div class="alert alert-info mt-4">
+                <strong>Belge Yüklendi:</strong> <a href="{{ ogrenci.sertifika.url }}" target="_blank">Görüntüle</a>
+            </div>
+            {% endif %}
+
+            <div class="mt-4">
+                <a href="{% url 'anket' %}" class="btn btn-outline-dark">Yeni Form</a>
+                <a href="{% url 'liste' %}" class="btn btn-outline-primary">Listeye Git</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
